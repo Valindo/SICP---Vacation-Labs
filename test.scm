@@ -1,20 +1,13 @@
-(define (sum term a next b)
-  (if (> a b)
-      0
-      (+ (term a)
-         (sum term (next a) next b))))
+; factorial code
+(define (product term a next b)
+  (if (> a b) 
+      1
+      (* (term a)
+         (product term (next a) next b))))
 
-(define (cube x )
-  (* x x x))
+(define (inc x) (+ x 1))
+(define (identity x)x)
 
-(define (sim f a b n)
-  (define h (/ (- a b) n))
-  (define (next x) (+ 1 x))
-  (define (y k)
-    (f (+ a (* k h))))
-  (define (term k)
-    (* (cond ((odd? k) 4)
-             ((or (= k 0) (= k n)) 1)
-             ((even? k) 2))
-    (y k)))
-  (/ (* h (sum term 0 next n)) 3))
+(define (factorial x )
+  (product identity 1 inc x))
+
