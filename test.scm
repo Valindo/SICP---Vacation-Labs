@@ -1,21 +1,16 @@
-; factorial code
-(define (product term a next b)
-  (if (> a b) 
-      1
-      (* (term a)
-         (product term (next a) next b))))
+(define (cube x)
+  (* x x x))
 
-(define (inc x) (+ x 1))
-(define (identity x)x)
+(define (sum term a next b)
+  (if (> a b)
+      0
+      (+ (term a) (sum term (next a) next b))))
 
-(define (factorial x )
-  (product identity 1 inc x))
-
-
-(define (pi-term n)
-  (if (even? n)
-      (/ (+ n 2.0) (+ n 1.0))
-      (/ (+ n 1.0) (+ n 2.0))))
-
-(define (pi-approx a b)
-  (* (product pi-term a inc b )) 4.0)
+(define (sim f a b n)
+  (define (add-h x)
+    (+ x h))
+  (define h
+    (/ (- b a) n))
+  (define (summand x)
+    (define multiplier
+      (cond ((or (= x a) (= x b) 1))))))

@@ -5,17 +5,27 @@
       (* (term a)
          (product term (next a) next b))))
 
+;iteratively
+(define (product-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (* result (term a)))))
+  (iter a 1))
+
+
+
 (define (inc x) (+ x 1))
 (define (identity x)x)
+
+
 
 (define (factorial x )
   (product identity 1 inc x))
 
-
-(define (pi-term n)
-  (if (even? n)
-      (/ (+ n 2.0) (+ n 1.0))
-      (/ (+ n 1.0) (+ n 2.0))))
-
-(define (pi-approx a b)
-  (* (product pi-term a inc b )) 4.0)
+(define (pi-approx n)
+  (define (next x)
+    (+ x 2))
+  (define (f n)
+    (/ (* n (next n)) (* (+ n 1) (+ n 1))))
+  (* (product f 2 next (* 2 n))))
