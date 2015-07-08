@@ -1,16 +1,45 @@
-(define (cube x)
-  (* x x x))
+(define (make-rat n d)
+  (cond ((and (< n  0) (< d  0)) (cons (- n ) (- d)))
+        ((< d 0) (cons (if (< n 0) (+ n) n) d))
+        ((and (> n 0) (> d 0)) (cons n d))))
 
-(define (sum term a next b)
-  (if (> a b)
-      0
-      (+ (term a) (sum term (next a) next b))))
+(define (numer x)
+  (car x))
 
-(define (sim f a b n)
-  (define (add-h x)
-    (+ x h))
-  (define h
-    (/ (- b a) n))
-  (define (summand x)
-    (define multiplier
-      (cond ((or (= x a) (= x b) 1))))))
+(define (denom x)
+  (cdr x))
+
+;(define (add-rat x y)
+;  (make-rat (+ (* (numer x) (denom y)) 
+;               (* (numer y) (denom x)))
+;            (* (denom x) (denom y))))
+
+;(define (sub-rat x y)
+;  (make-rat (+ (* (numer x) (denom y)) 
+;               (* (numer y) (denom x)))
+;            (* (denom x) (denom y))))
+
+;(define (mul-rat x y)
+;  (make-rat (* (numer x) (numer y)) (* (denom x) (denom y))))
+
+;(define (div-rat x y)
+;  (make-rat (* (numer x) (denom y)) (* (numer y) (denom x))))
+
+
+
+(define (print-rat x)
+  (newline)
+  (display (numer x))
+  (display "/")
+  (display (denom x)))
+
+(define  testing (make-rat (- 1) (- 2)))
+(print-rat testing)
+
+(define  testing (make-rat 1 (- 2)))
+(print-rat testing)
+
+;(define test (make-rat 1 3))
+;(print-rat test)
+
+;(print-rat ( add-rat testing test))
