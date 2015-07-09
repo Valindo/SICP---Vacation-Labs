@@ -1,16 +1,16 @@
-(define (empty? coins)
+(define (no-more? coins)
   (null? coins))
 
-(define (but-the-first-kind coins)
+(define (except-first-denomination coins)
   (cdr coins))
 
 (define (first-denomination coins)
   (car coins))
 
-(define (cc amount kinds-of-coins)
+(define (cc amount coin-values)
   (cond ((= amount 0) 1)
-        ((or (< amount 0) (empty? kinds-of-coins)) 0)
-        (else (+ (cc amount (but-the-first-kind kinds-of-coins))
-                 (cc (- amount (first-denomination kinds-of-coins))
-                 kinds-of-coins)))))
+        ((or (< amount 0) (no-more? coin-values)) 0)
+        (else (+ (cc amount (except-first-denomination coin-values))
+                 (cc (- amount (first-denomination coin-values))
+                 coin-values)))))
 
