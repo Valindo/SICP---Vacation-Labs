@@ -12,10 +12,9 @@
 
 ; the logic
 (define (make-center-percent c p)
-  (let ((percent (* c (/ p 100)))))
-  
-  (make-internal (- c percent) (+ c percent )))
+  (let ((percent (* c (/ p 100))))
+  (make-internal (- c percent) (+ c percent ))))
 
-(define (percent x)
+(define (per x)
   (/ (* 100 (/ (- upper-bound x) (lower-bound x)) 2)
      (center x)))
