@@ -23,4 +23,4 @@
 (print-point start-segment)
 (define end-segment (make-point 2 5))
 (print-point end-segment)
-(print-point (mid-point start-segment end-segment))
+(print-point (mid-point start-segment end))
